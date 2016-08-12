@@ -14,6 +14,9 @@ BOT_NAME = 'qidian'
 SPIDER_MODULES = ['qidian.spiders']
 NEWSPIDER_MODULE = 'qidian.spiders'
 
+#Mongodb settings
+MONGO_URI = 'localhost:27017'
+MONGO_DATABASE = 'scrapy'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
@@ -65,7 +68,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'qidian.pipelines.QidianPipeline': 300,
+    'qidian.pipelines.QidianJsonPipeline': 300,
+    'qidian.pipelines.MongoPipeline':301
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
